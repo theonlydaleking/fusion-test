@@ -1,7 +1,9 @@
 // @flow
-import React from 'react';
+import React, { Component } from 'react';
 
 import {styled} from 'fusion-plugin-styletron-react';
+import posed from 'react-pose'
+import Box from './Box'
 
 const Center = styled('div', {
   fontFamily: 'HelveticaNeue-Light, Arial',
@@ -44,29 +46,41 @@ const GettingStartedLink = styled('a', {
   height: '100%',
 });
 
-const Home = () => (
-  <FullHeightDiv>
-    <style>
-      {`
-        html,body,#root{height:100%;}
-        html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:rgba(0,0,0,0);}
-        body{margin:0;}
-        button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0;}
-        input::-webkit-inner-spin-button,input::-webkit-outer-spin-button,input::-webkit-search-cancel-button,input::-webkit-search-decoration,input::-webkit-search-results-button,input::-webkit-search-results-decoration{display:none;}
-        `}
-    </style>
-    <Center>
-      <FusionStyle>Fusion.js</FusionStyle>
+const PoserElement = posed.div({
+  draggable: 'x',
+  dragBounds: {left:0, right: 100}
+})
 
-      <Center>
-        <Circle>
-          <GettingStartedLink href="https://fusionjs.com/docs/getting-started">
-            Let&apos;s Get Started
-          </GettingStartedLink>
-        </Circle>
-      </Center>
-    </Center>
-  </FullHeightDiv>
-);
+
+
+class Home extends Component {
+  render() {
+    return(
+      <FullHeightDiv>
+        <Box />
+        <style>
+          {`
+            html,body,#root{height:100%;}
+            html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:rgba(0,0,0,0);}
+            body{margin:0;}
+            button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0;}
+            input::-webkit-inner-spin-button,input::-webkit-outer-spin-button,input::-webkit-search-cancel-button,input::-webkit-search-decoration,input::-webkit-search-results-button,input::-webkit-search-results-decoration{display:none;}
+            `}
+        </style>
+        <Center>
+          <FusionStyle>Fusion.js</FusionStyle>
+
+          <Center>
+            <Circle>
+              <GettingStartedLink href="https://fusionjs.com/docs/getting-started">
+                Let&apos;s Get Started
+              </GettingStartedLink>
+            </Circle>
+          </Center>
+        </Center>
+      </FullHeightDiv>
+    )
+  }
+}
 
 export default Home;
